@@ -5,11 +5,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier . --ignore-path .gitignore --write",
+    "test": "npm run test:types && npm run test:prettier",
+    "test:prettier": "prettier . --ignore-path .gitignore --check",
+    "test:types": "tsc"
   },
   "dependencies": {
     "next": "10.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@maiertech/prettier-config": "^0.3.1",
+    "@types/react": "^17.0.3",
+    "npm-check": "^5.9.2",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   }
 }
