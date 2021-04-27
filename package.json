@@ -1,13 +1,14 @@
 {
   "name": "maier.tech",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "format": "prettier . --ignore-path .gitignore --write",
-    "test": "npm run test:types && npm run test:prettier",
+    "test": "npm run test:types && npm run test:eslint && npm run test:prettier",
+    "test:eslint": "eslint . --ignore-path .gitignore",
     "test:prettier": "prettier . --ignore-path .gitignore --check",
     "test:types": "tsc"
   },
@@ -19,13 +20,19 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@maiertech/prettier-config": "^0.3.1",
+    "@maiertech/eslint-config": "^2.0.0",
+    "@maiertech/prettier-config": "^1.0.1",
     "@types/react": "^17.0.3",
     "autoprefixer": "^10.2.5",
+    "eslint": "^7.25.0",
     "npm-check": "^5.9.2",
     "postcss": "^8.2.10",
     "prettier": "^2.2.1",
     "tailwindcss": "^2.1.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "eslintConfig": {
+    "extends": "@maiertech"
+  },
+  "prettier": "@maiertech/prettier-config"
 }
