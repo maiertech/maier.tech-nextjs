@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prepare": "husky install",
     "format": "prettier . --ignore-path .gitignore --write",
     "test": "npm run test:types && npm run test:eslint && npm run test:prettier",
     "test:eslint": "eslint . --ignore-path .gitignore",
@@ -25,6 +26,8 @@
     "@types/react": "^17.0.3",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.25.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "npm-check": "^5.9.2",
     "postcss": "^8.2.10",
     "prettier": "^2.2.1",
@@ -33,6 +36,9 @@
   },
   "eslintConfig": {
     "extends": "@maiertech"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,md,mdx,ts,tsx,yml}": "prettier --write"
   },
   "prettier": "@maiertech/prettier-config"
 }
