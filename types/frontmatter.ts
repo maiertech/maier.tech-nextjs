@@ -1,11 +1,13 @@
-export type Frontmatter = { [key: string]: any };
+export type Frontmatter = { title: string; [key: string]: any };
 
-export interface PostFrontmatter {
-  title: string;
-  author: string;
+export interface TaggedItemFrontmatter extends Frontmatter {
   /** Date in local system time. */
   date: Date;
-  description: string;
   slug?: string;
   tags?: string[];
+}
+
+export interface PostFrontmatter extends TaggedItemFrontmatter {
+  author: string;
+  description: string;
 }
