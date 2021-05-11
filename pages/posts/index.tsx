@@ -1,13 +1,13 @@
-import { getFrontmatters } from '@/lib/mdx';
+import { getFrontmatters } from '@/lib/collections';
 import { normalize } from '@/lib/posts';
 
 import { GetStaticProps } from 'next';
-import { Post } from '@/types/content';
+import { PostPageMetadata } from '@/types/metadata';
 import { PostFrontmatter } from '@/types/frontmatter';
 
 const collection = 'posts';
 
-type Props = { posts: Post[] };
+type Props = { posts: PostPageMetadata[] };
 
 export default function PostsPage({ posts }: Props) {
   return (
@@ -20,12 +20,6 @@ export default function PostsPage({ posts }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const frontmatters = getFrontmatters(collection) as PostFrontmatter[];
-  // Sort desc by date.
-  const sortedFrontmatters = frontmatters.sort(
-    (a, b) => Number(b.date) - Number(a.date)
-  );
-  const posts = sortedFrontmatters.map((frontmatter) =>
-    normalize(frontmatter, collection)
-  );
+  const posts = normalize(frontmatters, collection);
   return { props: { posts } };
 };
