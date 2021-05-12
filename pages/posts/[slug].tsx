@@ -1,6 +1,7 @@
 import { getFileBySlug, getFrontmatters } from '@/lib/collections';
 import { slugify } from '@/lib/helpers';
 import { normalize as normalizeFrontmatters } from '@/lib/posts';
+import SEO from '@/components/seo';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
@@ -17,6 +18,7 @@ type Props = {
 export default function PostPage({ mdxSource, post }: Props) {
   return (
     <>
+      <SEO title={post.title} description={post.description} />
       <h1>Post</h1>
       <h2>Metadata</h2>
       <pre>{JSON.stringify(post, null, 2)}</pre>
