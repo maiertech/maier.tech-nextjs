@@ -2,6 +2,7 @@ import { getTags } from '@/lib/tags';
 import { getFrontmatters } from '@/lib/collections';
 import { normalize as normalizeFrontmatters } from '@/lib/posts';
 import { normalize as normalizeTags } from '@/lib/tags';
+import SEO from '@/components/seo';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PostPageMetadata, Tag } from '@/types/metadata';
@@ -12,9 +13,14 @@ const collection = 'posts';
 type Props = { tag: Tag; posts: PostPageMetadata[] };
 
 export default function TagPage({ tag, posts }: Props) {
+  const title = `Posts about ${tag.label}`;
   return (
     <>
-      <h1>{`Tag: ${tag.label}`}</h1>
+      <SEO
+        title={title}
+        description={`Posts about ${tag.label} in reverse chronological order.`}
+      />
+      <h1>{title}</h1>
       <pre>{JSON.stringify(posts, null, 2)}</pre>
     </>
   );

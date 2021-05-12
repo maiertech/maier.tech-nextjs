@@ -3,8 +3,8 @@ import {
   LightningBoltIcon,
   LightBulbIcon,
 } from '@heroicons/react/solid';
-import Layout from '../components/layout';
-import Head from 'next/head';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
 
 const areas = [
   {
@@ -30,9 +30,10 @@ const areas = [
 export default function Homepage() {
   return (
     <Layout>
-      <Head>
-        <title>Thilo Maier – Learn with me.</title>
-      </Head>
+      <SEO
+        title="Thilo Maier – Data visualization, Next.js and developer productivity"
+        description="Learn with me. Data visualization, Next.js and developer productivity."
+      />
       <div className="text-center py-12 lg:py-20">
         <p className="font-extrabold text-4xl sm:text-5xl lg:text-6xl sm:tracking-tight">
           Learn with me.
