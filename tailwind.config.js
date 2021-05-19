@@ -5,24 +5,23 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
-    colors: {
-      background: {
-        light: colors.gray[50],
-        default: colors.gray[100],
-        dark: colors.gray[200],
-      },
-      text: {
-        light: colors.gray[700],
-        default: colors.gray[800],
-        dark: colors.gray[900],
-      },
-      primary: {
-        light: colors.blue[700],
-        default: colors.blue[800],
-        dark: colors.blue[900],
+    extend: {
+      colors: {
+        background: colors.coolGray[50],
+        text: {
+          default: colors.gray[800],
+          lighter: colors.gray[500],
+        },
+        primary: {
+          default: colors.blue[800],
+          lighter: colors.blue[600],
+        },
+        secondary: {
+          default: colors.lime[900],
+          lighter: colors.lime[700],
+        },
       },
     },
-    extend: {},
   },
   variants: {
     extend: {},

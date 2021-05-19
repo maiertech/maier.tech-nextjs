@@ -47,7 +47,7 @@ export default function Homepage() {
         {areas.map((area) => (
           <div key={area.name}>
             <dt>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary-default text-background-default mb-3">
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary-default text-background mb-3">
                 <area.icon className="h-6 w-6" aria-hidden="true" />
               </div>
               <p className="text-2xl leading-relaxed font-medium">
