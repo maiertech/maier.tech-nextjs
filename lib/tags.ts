@@ -4,8 +4,6 @@ import allowedTags from '@/content/tags';
 
 import { Tag } from '@/types/metadata';
 
-// Do not cache tags to allow adding and removing tags in dev!
-
 /**
  * Retrieve all tags for given collections.
  *
@@ -35,8 +33,8 @@ export function getTags(collection: string): Tag[] {
  */
 export function normalize(tags: string[]): Tag[] {
   if (tags.length === 0) return [];
-  return tags.reduce((validTags, tag) => {
-    const label = allowedTags[tag];
+  const normalizedTags = tags.reduce((validTags, tag) => {
+    const label = allowedTags[tag]?.label;
     if (label) {
       validTags.push({
         key: tag,
@@ -46,4 +44,5 @@ export function normalize(tags: string[]): Tag[] {
     }
     return validTags;
   }, [] as Tag[]);
+  return normalizedTags;
 }
