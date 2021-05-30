@@ -1,4 +1,5 @@
 import path from 'path';
+
 import authors from '@/content/authors';
 import { slugify } from '@/lib/helpers';
 import { normalize as normalizeTags } from '@/lib/tags';
@@ -25,14 +26,16 @@ export function normalize(
 
   // Normalize frontmatters.
   return sortedFrontmatters.map((frontmatter) => {
-    const { title, author, date, description, slug, tags } = frontmatter;
+    const { title, author, date, description, slug, tags, links } = frontmatter;
     return {
       title,
       author: authors[author].name,
-      // Gray matter returns date prop as Date object in local system time. Convert to UTC ISO string.
-      date: date.toUTCString(),
+      // Gray matter returns date prop as Date object in local system time.
+      // Convert into an ISO string with the timezone set to UTC.
+      date: date.toISOString(),
       description,
       tags: tags ? normalizeTags(tags) : [],
+      links: links ?? null,
       // Use frontmatter slug for path or slugify title.
       path: path.join('/', collection, slug ?? slugify(title)),
     };

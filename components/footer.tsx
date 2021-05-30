@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Container from '@/components/container';
 
 type Props = {
   className: string;
@@ -38,27 +39,29 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-primary-default to-primary-lighter text-background">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-6">
-        <nav className="flex flex-wrap justify-center" aria-label="Footer">
-          {navigation.main.map(({ name, href }) => (
-            <div key={name} className="py-2 px-5">
-              <Link href={href}>
-                <a className="text-base">{name}</a>
-              </Link>
-            </div>
-          ))}
-        </nav>
-        <div className="flex flex-wrap justify-center space-x-5">
-          {navigation.social.map((item) => (
-            <a key={item.name} href={item.href}>
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-7 w-7" aria-hidden={true} />
-            </a>
-          ))}
+    <footer className="bg-text-lighter text-background">
+      <Container>
+        <div className="space-y-6 py-8">
+          <nav className="flex flex-wrap justify-center" aria-label="Footer">
+            {navigation.main.map(({ name, href }) => (
+              <div key={name} className="py-2 px-5">
+                <Link href={href}>
+                  <a className="text-base">{name}</a>
+                </Link>
+              </div>
+            ))}
+          </nav>
+          <div className="flex flex-wrap justify-center space-x-5">
+            {navigation.social.map((item) => (
+              <a key={item.name} href={item.href}>
+                <span className="sr-only">{item.name}</span>
+                <item.icon className="h-7 w-7" aria-hidden={true} />
+              </a>
+            ))}
+          </div>
+          <p className="text-center text-base">&copy; 2021 Thilo Maier</p>
         </div>
-        <p className="text-center text-base">&copy; 2021 Thilo Maier</p>
-      </div>
+      </Container>
     </footer>
   );
 }

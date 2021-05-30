@@ -34,12 +34,13 @@ export function getTags(collection: string): Tag[] {
 export function normalize(tags: string[]): Tag[] {
   if (tags.length === 0) return [];
   const normalizedTags = tags.reduce((validTags, tag) => {
-    const label = allowedTags[tag]?.label;
-    if (label) {
+    const allowedTag = allowedTags[tag];
+    if (allowedTag) {
       validTags.push({
         key: tag,
-        label,
-        path: path.join('/tags', tag),
+        label: allowedTag.label,
+        title: allowedTag.title,
+        path: path.join('/', tag),
       });
     }
     return validTags;

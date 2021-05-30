@@ -1,10 +1,10 @@
 {
+  "css.validate": false,
   "debug.javascript.autoAttachFilter": "disabled",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.autoSave": "onFocusChange",
   "files.associations": {
     "*.mdx": "markdown"
-  },
-  "telemetry.enableTelemetry": false
+  }
 }
