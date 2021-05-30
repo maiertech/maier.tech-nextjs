@@ -1,3 +1,5 @@
+import { Link } from '@/types/metadata';
+
 export type Frontmatter = { title: string; [key: string]: any };
 
 export interface TaggedItemFrontmatter extends Frontmatter {
@@ -10,4 +12,5 @@ export interface TaggedItemFrontmatter extends Frontmatter {
 export interface PostFrontmatter extends TaggedItemFrontmatter {
   author: string;
   description: string;
+  links: Link[];
 }

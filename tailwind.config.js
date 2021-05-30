@@ -21,10 +21,34 @@ module.exports = {
           lighter: colors.lime[700],
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme('colors.primary.default'),
+              '&:hover': {
+                color: theme('colors.primary.lighter'),
+              },
+            },
+            code: {
+              color: theme('colors.text.default'),
+            },
+            'code::before': {
+              content: 'unset',
+            },
+            'code::after': {
+              content: 'unset',
+            },
+            'a code': {
+              color: 'unset',
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

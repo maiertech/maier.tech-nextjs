@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from '@/components/logo';
+import Container from '@/components/container';
 
 const navigation = [
   { name: 'Posts', href: '/posts' },
@@ -8,9 +9,9 @@ const navigation = [
 
 export default function Header() {
   return (
-    <header>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex justify-between items-center py-6">
+    <header aria-label="Top">
+      <Container>
+        <nav className="flex justify-between items-center py-6">
           <div className="flex items-center space-x-3">
             <Link href="/">
               <a className="text-primary-default hover:text-primary-lighter">
@@ -28,8 +29,8 @@ export default function Header() {
               </Link>
             ))}
           </div>
-        </div>
-      </nav>
+        </nav>
+      </Container>
     </header>
   );
 }

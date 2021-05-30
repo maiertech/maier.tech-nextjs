@@ -1,5 +1,6 @@
 import Header from '@/components//header';
 import Footer from '@/components/footer';
+import Container from '@/components/container';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,12 +9,12 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-shrink-0 mb-6">
+      <div className="flex-shrink-0 mb-3 md:mb-6">
         <Header />
       </div>
-      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        {children}
-      </div>
+      <main id="skip" className="flex-1 mb-8 md:mb-12">
+        <Container>{children}</Container>
+      </main>
       <div className="flex-shrink-0">
         <Footer />
       </div>
