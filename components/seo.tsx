@@ -8,7 +8,6 @@ function decorate(title: string, path: string) {
 
 type Props = {
   siteUrl?: string;
-  pathname?: string;
   title: string;
   description: string;
   keywords?: string[];
@@ -20,11 +19,10 @@ export default function SEO({
   description,
   keywords,
   siteUrl = 'https://maier.tech',
-  pathname,
   canonicalUrl,
 }: Props) {
   const router = useRouter();
-  const path = pathname ?? router.pathname;
+  const path = router.asPath;
   const url = canonicalUrl ? canonicalUrl : `${siteUrl}${path}`;
   const decoratedTitle = decorate(title, path);
   return (
