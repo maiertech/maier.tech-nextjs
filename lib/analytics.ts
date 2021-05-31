@@ -8,6 +8,7 @@ export function useAnalytics() {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production' && process.env.FATHOM_SITE_ID) {
       Fathom.load(process.env.FATHOM_SITE_ID, {
+        url: 'https://firefly.maier.tech/script.js',
         includedDomains: ['maier.tech'],
       });
     }
