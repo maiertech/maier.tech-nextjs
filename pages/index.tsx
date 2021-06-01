@@ -6,8 +6,8 @@ export default function Homepage() {
   return (
     <Layout>
       <SEO
-        title="Thilo Maier – Data visualization, Next.js and developer productivity"
-        description="Learn with me. Data visualization, Next.js and developer productivity."
+        title="Thilo Maier – Next.js and developer productivity"
+        description="Learn, create, share. Repeat. I write about creating super fast websites with Next.js and about developer productivity."
       />
       <div className="text-center py-8 lg:py-12">
         <p className="font-extrabold text-4xl sm:text-5xl lg:text-6xl sm:tracking-tight">
