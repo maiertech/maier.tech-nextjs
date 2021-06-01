@@ -16,8 +16,8 @@ export default function Homepage() {
         <p className="max-w-xl mt-5 mx-auto text-xl text-text-light">
           Hi, my name is Thilo. I am a developer based in Queens, NY. I work as
           Information Systems Officer at the world's largest non-profit. I write
-          about developer productivity and how to create super fast websites
-          with Next.js and Gatsby.
+          about creating super fast websites with Next.js and about developer
+          productivity.
         </p>
       </div>
       <Topics />

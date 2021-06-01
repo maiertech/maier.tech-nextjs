@@ -4,7 +4,7 @@ const topics = [
   {
     title: 'Boost your developer productivity',
     description:
-      'I write about how I boost my productivity as a developer. Mostly VS Code but also how to not loose track of what is important and how to keep distractions at bay.',
+      'I write about how I boost my productivity as a developer. Mostly tooling but also how to not loose track of what is important and how to keep distractions at bay.',
     href: '/productivity',
   },
   {
@@ -12,18 +12,6 @@ const topics = [
     description:
       'Next.js is my favorite framework to create fast and scalable websites. I write about issues I ran into and how I solved them.',
     href: '/nextjs',
-  },
-  {
-    title: 'Create super fast websites with Gatsby',
-    description:
-      'Gatsby is another popular framework to create fast and scalable websites. I write about my experience creating and maintaining Gatsby themes.',
-    href: '/gatsby',
-  },
-  {
-    title: 'Take VS Code to the cloud with GitHub Codespaces',
-    description:
-      'Work on projects as a team with remote containers and zero initial configuration. Getting started with Codespaces is easy.',
-    href: '/codespaces',
   },
 ];
 
