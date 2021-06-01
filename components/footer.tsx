@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import * as Fathom from 'fathom-client';
+
 import Container from '@/components/container';
 
 type Props = {
   className: string;
   'aria-hidden': boolean;
 };
+
+type SocialId = 'github' | 'twitter';
 
 const navigation = {
   main: [
@@ -13,6 +17,7 @@ const navigation = {
   ],
   social: [
     {
+      id: 'twitter',
       name: 'Twitter',
       href: 'https://twitter.com/maiertech',
       icon: (props: Props) => (
@@ -22,6 +27,7 @@ const navigation = {
       ),
     },
     {
+      id: 'github',
       name: 'GitHub',
       href: 'https://github.com/maiertech',
       icon: (props: Props) => (
@@ -35,6 +41,15 @@ const navigation = {
       ),
     },
   ],
+};
+
+const trackGoal = (id: SocialId) => {
+  const goalCodes = {
+    github: 'TATS1IS1',
+    twitter: '2I6NRT6B',
+  };
+
+  Fathom.trackGoal(goalCodes[id], 0);
 };
 
 export default function Footer() {
@@ -53,7 +68,11 @@ export default function Footer() {
           </nav>
           <div className="flex flex-wrap justify-center space-x-5">
             {navigation.social.map((item) => (
-              <a key={item.name} href={item.href}>
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={() => trackGoal(item.id as SocialId)}
+              >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-7 w-7" aria-hidden={true} />
               </a>
