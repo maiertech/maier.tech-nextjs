@@ -2,16 +2,16 @@ import Link from 'next/link';
 
 const topics = [
   {
-    title: 'Boost your developer productivity',
-    description:
-      'I write about how I boost my productivity as a developer. Mostly tooling but also how to not loose track of what is important and how to keep distractions at bay.',
-    href: '/productivity',
-  },
-  {
     title: 'Create super fast websites with Next.js',
     description:
       'Next.js is my favorite framework to create fast and scalable websites. I write about issues I ran into and how I solved them.',
     href: '/nextjs',
+  },
+  {
+    title: 'Boost your developer productivity',
+    description:
+      'I write about how I boost my productivity as a developer. Mostly tooling but also how to not loose track of what is important and how to keep distractions at bay.',
+    href: '/productivity',
   },
 ];
 
