@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/posts/how-yarn-1-manages-conflicting-package-versions",
+      "destination": "/posts/a-guide-to-understanding-how-yarn-hoists-dependencies-and-handles-conflicting-packages"
+    },
+    {
+      "source": "/posts/what-you-need-to-know-about-the-file-system-route-api-in-gatsby",
+      "destination": "/posts/what-you-need-to-know-about-gatsby-s-file-system-route-api"
+    }
+  ]
+}
