@@ -1,54 +1,56 @@
 ---
-title: How Yarn 1 manages conflicting package versions
+title:
+  A guide to understanding how Yarn hoists dependencies and handles conflicting
+  packages
 author: thilo
 date: 2021-02-19
 description:
-  Yarn 1 uses hoisting to eliminate nodes from the dependency tree. This post
-  discusses examples of how to use `yarn why` and the yarn.lock file to
-  understand how Yarn hoists dependencies and deals with conflicting package
-  versions. This post lays the foundation for understanding a common pitfall
-  with conflicting dependecies when using multiple Gatsby themes in one site.
+  Learn how Yarn 1 hoists packages, handles conflicting package versions and how
+  you can use `yarn why` and the yarn.lock file to understand hoisting.
 tags:
-  - gatsby
+  - productivity
 ---
 
 This post discusses the concept of
-[hoisting](https://yarnpkg.com/advanced/lexicon#hoisting), which is a staple of
-[Yarn 1](https://classic.yarnpkg.com/lang/en/). [Yarn 2](https://yarnpkg.com/)'s
-[Plug'n'Play](https://yarnpkg.com/features/pnp) has addressed most issues around
-hoisting, making this post partially obsolete as soon as you move to Yarn 2. In
-this post Yarn (without version number) refers to Yarn 1. This post lays the
-foundation for understanding a common pitfall with conflicting dependencies when
-using multiple Gatsby themes in one site.
+[hoisting](https://yarnpkg.com/advanced/lexicon#hoisting), which is a key
+feature of [Yarn 1](https://classic.yarnpkg.com/lang/en/).
+[Yarn 2](https://yarnpkg.com/)’s [Plug'n'Play](https://yarnpkg.com/features/pnp)
+has addressed most issues around hoisting. But most projects using Yarn continue
+using Yarn 1 and have not made the move to Yarn 2 yet. In this post Yarn
+(without version number) refers to Yarn 1.
 
-## Hoisting
+## How Yarn hoists dependencies
 
 Yarn converts dependencies from a `package.json` into a tree by resolving them
 recursively. An un-optimized dependency tree can be quite complex and many
 levels deep to reflect dependencies of dependencies. Some packages show up
 multiple times in the tree, possibly at conflicting versions. Yarn uses hoisting
 to optimize (or rather deduplicate) the dependency tree by removing as many
-nodes as possible. [Yarn's docs](https://yarnpkg.com/advanced/lexicon#hoisting)
-state that "There isn't a single way to decide how to transform the tree, and
-different package managers make different tradeoffs (some optimize for package
-popularity, package size, highest versions, ...). For this reason, no guarantee
-can be made regarding the final hoisting layout - except that packages will
-always be able to access the dependencies they listed in their manifests."
+nodes as possible. [Yarn’s docs](https://yarnpkg.com/advanced/lexicon#hoisting)
+state that
 
-The docs do not describe Yarn's hoisting algorithm, but mention certain
+> There isn’t a single way to decide how to transform the tree, and different
+> package managers make different tradeoffs (some optimize for package
+> popularity, package size, highest versions, ...). For this reason, no
+> guarantee can be made regarding the final hoisting layout - except that
+> packages will always be able to access the dependencies they listed in their
+> manifests.
+
+The docs do not describe Yarn’s hoisting algorithm, but mention certain
 [hoisting guarantees](https://classic.yarnpkg.com/blog/2017/05/31/determinism/).
-The conclusion is that you should not expect your `node_modules` folder to have
-a specific layout. As you will see later in this post, small changes in
-dependencies can cause big changes in the layout of `node_modules`. Another
-thing to keep in mind is that hoisting packages only works when package versions
-are compatible in a [semantic versioning](https://semver.org/) sense, i.e. they
-need to have the same major version number (but not 0).
+These guarantees suggest that you should not expect your `node_modules` folder
+to have a specific layout. As you will see later in this post, small changes in
+dependencies can cause big changes in the layout of `node_modules`.
 
-## `yarn why`
+Another thing to keep in mind is that packages can be hoisted only when package
+versions are compatible in a [semantic versioning](https://semver.org/) sense,
+i.e. they have the same major version number (but not 0).
+
+## Use `yarn why` and the yarn.lock file to understand hoisting
 
 Once a Yarn install is complete, you can use
 [`yarn why`](https://classic.yarnpkg.com/en/docs/cli/why/) to figure out what
-Yarn did with specific packages. Let's look at an example. I ran
+Yarn did with specific packages. Let’s look at an example. I ran
 
 ```bash
 yarn why @maiertech/gatsby-theme-posts-core
@@ -80,7 +82,7 @@ at version 0.8.0, which is a dependency of
 It also tells us that it hoisted this version, which makes sense because
 @maiertech/gatsby-theme-posts-core is used only once in the entire project.
 
-Let's look at another `yarn why` output from a different repository, this time
+Let’s look at another `yarn why` output from a different repository, this time
 for package
 [@maiertech/gatsby-theme-pages-core](https://github.com/maiertech/gatsby-themes/tree/master/packages/gatsby-theme-pages-core):
 
@@ -92,7 +94,7 @@ yarn why v1.22.5
 [4/4] Calculating file sizes...
 => Found "@maiertech/gatsby-theme-pages-core@0.5.0"
 info Has been hoisted to "@maiertech/gatsby-theme-pages-core"
-info This module exists because it's specified in "dependencies".
+info This module exists because it’s specified in "dependencies".
 info Disk size without dependencies: "76KB"
 info Disk size with unique dependencies: "8.15MB"
 info Disk size with transitive dependencies: "76KB"
@@ -134,7 +136,7 @@ and 0.4.0:
 
 Note that `yarn.lock` does not tell us which packages were hoisted.
 
-Let's look at another example. This time we look at what `yarn why` tells us
+Let’s look at another example. This time we look at what `yarn why` tells us
 about package [browserslist](https://browserl.ist/), a dependency that is used
 by many packages:
 
@@ -188,7 +190,7 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.12.2, browserslist@^4
 ...
 ```
 
-Let's look at one more example. This time I installed package browserslist in my
+Let’s look at one more example. This time I installed package browserslist in my
 dependencies and pinned it to outdated version 4.16.2. This changed things quite
 a bit:
 
@@ -199,7 +201,7 @@ a bit:
 [4/4] Calculating file sizes...
 => Found "browserslist@4.16.2"
 info Has been hoisted to "browserslist"
-info This module exists because it's specified in "dependencies".
+info This module exists because it’s specified in "dependencies".
 info Disk size without dependencies: "124KB"
 info Disk size with unique dependencies: "3.81MB"
 info Disk size with transitive dependencies: "3.81MB"
@@ -229,8 +231,7 @@ dependency to a specific version triggerd a massive change in the layout of
 `node_modules`. There are now 10 nodes with 10 copies of version 4.16.3 and one
 hoisted node with one copy of version 4.16.2 (instead of just one hoisted node
 with one copy of version 4.16.3). The bottom line from this observation is that
-you should never make assumptions about the layout of `node_modules` in your
-packages.
+you should never make assumptions about the layout of `node_modules`.
 
 A quick look at `yarn.lock` reveals that it has now two entries for browserslist
 for versions 4.16.2. and 4.16.3:
@@ -253,22 +254,22 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.12.2, browserslist@^4
 ...
 ```
 
-## Conclusions
+## 5 takeaways from hoisting
 
 - Yarn tries to eliminate as many nodes as possible from the dependency tree by
   hoisting as many packages as possible.
 - Hoisting works best if you
   [specify your dependencies with a caret (`^`)](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies).
   The more restrictive you are, e.g. by pinning dependencies, the more
-  constriants you create for Yarn that make it hard to hoist packages.
-- You can debug issues with dependencies with a combination of running
-  `yarn why` on certain packages and looking at `yarn.lock`.
-- Hoisting can conceal missing dependencies. Hoisted dependencies can be
-  imported anywhere. If you happen to forget to declare a dependency in your
-  `package.json` and then import it, it might still work when Yarn happens to
-  hoist this dependency from another node in the dependency tree. But it might
-  stop working unexpectedly, when the layout of `node_modules` changes because
-  of something as minor as a pinned dependency.
+  constraints you create for Yarn that make it hard to hoist packages.
+- You can debug issues with conflicting dependencies with a combination of
+  running `yarn why` and looking at `yarn.lock`.
+- Hoisting can conceal missing dependencies, because hoisted dependencies can be
+  imported anywhere in your project. If you forget to declare a dependency in
+  `package.json` and then import it, it will still work if Yarn happens to hoist
+  this dependency from another node in the dependency tree. But it might stop
+  working unexpectedly when the layout of `node_modules` changes because of
+  something as minor as a pinned dependency.
 - Yarn always
   [honors its basic guarantees for dependencies declared as `dependencies`, `devDependencies` and `peerDependencies` in `package.json`](https://classic.yarnpkg.com/blog/2018/04/18/dependencies-done-right/),
   i.e. when you import a dependency, Yarn will always deliver a version
