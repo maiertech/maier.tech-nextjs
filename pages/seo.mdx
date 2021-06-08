@@ -1,0 +1,120 @@
+import MdxPageLayout from '@/components/mdx-page-layout';
+
+export const metadata = {
+  title: 'SEO guide',
+  description: 'How to do SEO for a Next.js site the right way.',
+};
+
+export default ({ metadata, children }) => (
+  <MdxPageLayout metadata={metadata}>{children}</MdxPageLayout>
+);
+
+# SEO guide
+
+This SEO guide is tailored to this website, which runs on
+[Next.js](https://nextjs.org/). It is my interpretation of what good SEO
+practices should look like. This guide is work in progress.
+
+SEO traffic from [Google](https://www.google.com/) is the most important
+referrer for my site. I wished referrers were more diversified, but at the
+moment social media referrals are almost nonexistent. This is fairly typical for
+newly launched personal websites that get a couple hundred views per month.
+
+I hope that other sources, such as [Twitter](https://twitter.com/), will become
+relevant referrers in the future, but until then I want to make sure that my
+posts tap fully into their SEO potential. And that’s what this guide is about.
+
+## Ground rules
+
+- For me SEO is about increasing the chances that my posts are ranked high up in
+  Google’s search results for **relevant keywords**.
+- I want my audience to read my posts and not just increase the traffic to my
+  website. Therefore, SEO is about **making quality content discoverable** and
+  not about creating clickbait.
+- The driver for my posts shoud be **genuine interest in a topic** and not a
+  desire to piggyback on popular SEO keywords.
+
+## My SEO workflow
+
+### Step 1: Ingore SEO while shaping a post
+
+While I shape a post, I completley ignore SEO. This step is about drafting a
+post that is coherent, concise, avoids jargon and has a compelling story to tell
+(in ideally less than 1,000 words). This can take anywhere between a few hours
+and a few weeks. Some posts need time to mature. Since shaping a post is already
+quite challenging, I do not want to deal with SEO at this point.
+
+### Step 2: Keyword research
+
+Once I feel good about my post, it’s time to identify keywords that increase my
+chances for ranking higher in Google’s search results. To explain what I’m doing
+I need to introduce two terms:
+
+- **Short tail keywords:** Search phrases with only one or two keywords. They
+  are frequently searched, but tend to result in less clickthroughs because you
+  compete with established sites that have figured SEO.
+- **Long tail keywords:** Search phrases with more keywords. They are less
+  frequently searched and tend to result in higher clickthroughs, because you
+  compete in a specialized niche.
+
+This step is about identifying matching short tail keywords and expanding them
+to long tail keywords for which it is easier to rank higher.
+
+For my post
+[Improve SEO for your Next.js site by adding canonical URLs](https://maier.tech/posts/improve-seo-for-your-next-js-site-by-adding-canonical-urls)
+I started with short tail keywords _canonical url_ and typed them into Google.
+This gave me an overview of my competitors, which are all established websites
+with great SEO and hard to outrank.
+
+At the bottom of a search page, Google displays related long tail keywords, e.g.
+_canonical url html_ or _canonical url checker_. None of them seemed a great
+match. Then I tried short tail keywords _canonical urls_ and got the following
+matching (long and short tail) keywords:
+
+- canonical url example
+- canonical urls seo
+- canonical link
+
+The key in this step is to be come up with list of long tail keywords that match
+the content by spending 15 minutes on creative googling and exploring related
+searches.
+
+You can make this step much more scientific by using the
+[Ahrefs keyword generator](https://ahrefs.com/keyword-generator), which cranks
+out a ranked list of long tail keywords and scores to indicate estimated monthly
+search volumes and how hard it is to rank in the top 10 search results.
+
+### Step 3: Add SEO metadata
+
+General rule: place keywords rather earlier than later.
+
+#### Title
+
+A great title helps you improve your ranking for matching long tail keywords and
+it helps you improve the clickthrough rate.
+
+#### Description
+
+No more than 160 characters hard limit. It takes me many iterations and a lot of
+time to distill the essence of a post into less than 160 characters, which is
+the maxmium that Google displays in search results. If I keep below 160
+characters, Google will not truncate my description.
+
+#### Meta keywords
+
+You can ignore it because Google ignores it.
+
+#### Subheadings
+
+Subheadings are another opportunity to place matching long tail keywords.
+
+#### Internal links
+
+You should link to other posts on your website provided that the link provides
+added value to the reader. LInked text is an opportunity to establish context
+for the linked content. Avoid linking to your biggest competitors.
+
+## Links
+
+- [Free SEO tools (Ahrefs)](https://ahrefs.com/free-seo-tools)
+- [SEO thread on Twitter by Monica Lent](https://twitter.com/monicalent/status/1361735857737265157)

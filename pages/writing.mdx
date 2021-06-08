@@ -1,0 +1,31 @@
+import MdxPageLayout from '@/components/mdx-page-layout';
+
+export const metadata = {
+  title: 'Writing guide',
+  description:
+    'This guide walks you through how to write a post for maier.tech.',
+};
+
+export default ({ metadata, children }) => (
+  <MdxPageLayout metadata={metadata}>{children}</MdxPageLayout>
+);
+
+# Writing guide
+
+When I write posts for this site I follow this writing guide.
+
+## Words to avoid
+
+| Word   | Description                                                     |
+| :----- | :-------------------------------------------------------------- |
+| config | Replace with configuration.                                     |
+| dev    | Replace with developer or development depending on the context. |
+| repo   | Replace with repository.                                        |
+| simply | Do not make things look trivial.                                |
+
+## Special characters
+
+### Apostrophe
+
+Use ’ to write an apostrophe and not '. Write greengrocer’s apostrophe instead
+of greengrocer's apostrophe. On a Mac use ⇧⌥\] to type ’.
