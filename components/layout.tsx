@@ -2,11 +2,11 @@ import Header from '@/components//header';
 import Footer from '@/components/footer';
 import Container from '@/components/container';
 
-interface LayoutProps {
+type Props = {
   children: React.ReactNode;
-}
+};
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: Props) {
   return (
     <div className="flex flex-col h-full">
       <div className="flex-shrink-0 mb-3 md:mb-6">

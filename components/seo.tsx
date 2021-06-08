@@ -2,13 +2,9 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import pkg from '../package.json';
 
-type Props = {
-  title?: string;
-  description: string;
-  canonicalUrl?: string;
-};
+import { SEOMetadata } from '@/types/metadata';
 
-export default function SEO({ title, description, canonicalUrl }: Props) {
+export default function SEO({ title, description, canonicalUrl }: SEOMetadata) {
   const router = useRouter();
   const path = router.asPath;
   const url = `${pkg.homepage}${path}`;

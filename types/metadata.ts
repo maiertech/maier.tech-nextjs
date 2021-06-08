@@ -14,6 +14,13 @@ export interface Link {
   href: string;
 }
 
+export interface SEOMetadata {
+  /** Title is optional because next-seo.config.js defines a default title. */
+  title?: string;
+  description: string;
+  canonicalUrl?: string;
+}
+
 interface PageMetadata {
   title: string;
   path: string;
