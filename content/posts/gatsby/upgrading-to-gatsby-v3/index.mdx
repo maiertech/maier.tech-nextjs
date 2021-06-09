@@ -3,10 +3,8 @@ title: Upgrading my Gatsby themes to Gatsby v3
 author: thilo
 date: 2021-03-02
 description:
-  Gatsby v3 was launched today. I upgraded my digital garden theme and all
-  underlying Gatsby themes to Gatsby v3. Upgrading my themes required a few
-  changes, all of which were outlined in the migration guide. In this post I
-  describe my upgrade experience.
+  In this post I describe my experience upgrading my Gatsby themes from Gatsby
+  v2 to v3. I go over the errors I encountered and the migration step by step.
 tags:
   - gatsby
 ---
@@ -19,7 +17,7 @@ and
 [fast refresh](https://www.gatsbyjs.com/docs/reference/release-notes/v3.0/#fast-refresh).
 Both features should result in a better DX for consumers of my
 [Gatsby themes](https://github.com/maiertech/gatsby-themes). So I gave it a try
-and upgraded my themes and my digital garden.
+and upgraded my themes.
 
 My starting point was the
 [migration guide from v2 to v3](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/).
@@ -129,12 +127,12 @@ https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/
 Gatsby v3 does not just pull the rug from under your feet and eliminate APIs.
 Instead, it offers a transition period until the release of Gatsby v4 for legacy
 APIs to be phased out.
-[Migration guide secion `@nodeInterface`](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#nodeinterface)
+[Migration guide section `@nodeInterface`](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#nodeinterface)
 details this warning. I went ahead and eliminiated all occurrences of
 `@nodeInterface` as explained in the guide. Second warning eliminated.
 
 The next error was triggered by Webpack, which complained that I was trying to
-use `path` from Node's API in the browser during development:
+use `path` from Node’s API in the browser during development:
 
 ```bash
 ERROR #98124  WEBPACK
@@ -160,7 +158,7 @@ File: ../../packages/gatsby-helpers/index.js:12:16
 This error is shown because I use
 [@maiertech/gatsby-helpers](https://github.com/maiertech/gatsby-themes/tree/master/packages/gatsby-helpers),
 in which some helper functions use the Node API. One of them, `createPath`, uses
-Node's `path` and runs in one example site in the browser during development.
+Node’s `path` and runs in one example site in the browser during development.
 The solution to eliminating this error is outlined in above error message and
 the
 [migration guide section about Webpack 5 config](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#webpack-5-node-configuration-changed-nodefs-nodepath-)
@@ -187,16 +185,15 @@ next warning was specific to one of my themes, which wires up
 warn Plugin gatsby-plugin-theme-ui is not compatible with your gatsby version 3.0.0 - It requires gatsby@^2.13.1
 ```
 
-`gatsby-plugin-theme-ui`'s `peerDependencies` has not yet been upgraded to
-Gatsby v3. Following the advice in
+gatsby-plugin-theme-ui’s `peerDependencies` has not yet been upgraded to Gatsby
+v3. Following the advice in
 [migration guide section "Handling dependencies for plugins that are not yet updated"](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/#handling-dependencies-for-plugins-that-are-not-yet-updated)
-I had not much choice other than ignore the warning since
-`gatsby-plugin-theme-ui` is outside my control. Since the plugin works fine with
-Gatsby v3, not a deal breaker.
+I had not much choice other than ignore the warning since gatsby-plugin-theme-ui
+is outside my control. Since the plugin works fine with Gatsby v3, not a deal
+breaker.
 
-Then I released new versions for all my themes and upgraded my
-[digital garden](https://github.com/maiertech/coding-garden) to Gatsby v3 and
-the latest
+Then I released new versions for all my themes and upgraded my digital garden to
+Gatsby v3 and the latest
 [@maiertech/gatsby-theme-digital-garden](https://github.com/maiertech/gatsby-themes/tree/master/packages/gatsby-theme-digital-garden),
 which I had just released. But I ran into another error:
 
@@ -223,6 +220,6 @@ later, the upgrade to Gatsby v3 was complete.
 
 I think the Gatsby team did a great job with the v2 to v3 migration guide,
 because it covered everything I needed to know for the upgrade. For a normal
-Gatsby site using no theme or one of the
+Gatsby site that uses no theme or one of the
 [official themes](https://github.com/gatsbyjs/themes), I would expect that
 upgrading to Gatsby v3 should work without any issues.

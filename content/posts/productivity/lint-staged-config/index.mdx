@@ -3,9 +3,8 @@ title: Optimizing lint-staged.config.js for Prettier
 author: thilo
 date: 2021-01-12
 description:
-  This post explains how to optimize a lint-staged.config.js so Prettier can
-  format any supported file without having to maintain file endings in
-  lint-staged.config.js.
+  In this post I explain how to optimize lint-staged.config.js so Prettier can
+  format any supported file without listing file endings in the configuration.
 tags:
   - productivity
 ---
@@ -98,6 +97,5 @@ prettier --write
 
 displays its help page. This seems to trip up `lint-staged`.
 
-This may still seem like overkill, but it is elegant and if you maintain shared
-helpers across all of your projects, you can add this config and share it with
-minimal overhead.
+This may still seem like overkill, but if you maintain shared helpers across all
+of your projects, you can add this config and share it with minimal overhead.

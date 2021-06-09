@@ -3,13 +3,13 @@ title: Husky v6 pitfalls
 author: thilo
 date: 2021-04-02
 description:
-  I recently upgraded Husky from v4 to v6. It turned out that this was more
-  complicated than I expected. In this post I explain how to migrate a simple v4
-  config to v6.
+  Upgrading Husky from v4 to v6 turned out to be more complicated than I
+  expected. In this post I explain how to migrate a simple v4 configuration to
+  v6.
 tags:
   - productivity
 links:
-  - title: "What's new in husky 5"
+  - title: 'What’s new in husky 5'
     href: https://dev.to/typicode/what-s-new-in-husky-5-32g5
   - title: Husky docs
     href: https://typicode.github.io/husky/
@@ -38,7 +38,7 @@ In husky v4 my hooks were configured in a `.huskyrc`:
 ```
 
 Husky v4 took care of installing hooks automatically. In v6, instead of
-maintaining a config file, you maintain hook files. You can use
+maintaining a configuration file, you maintain hook files. You can use
 [this script](https://github.com/typicode/husky-4-to-6) to migrate from v4 to
 v6. This is the NPM version of the script:
 
@@ -50,9 +50,9 @@ npm install husky@6 --save-dev \
 
 This creates a `.husky` folder with a `.gitignore` inside and an empty
 pre-commit hook file `.husky/pre-commit`, which is the hook most commonly used
-in projects. Add the pre-commit commands from your v4 config file. Since hooks
-run outside of NPM, you need to type `npx lint-staged` instead of `lint-staged`.
-This is what the generated and modified pre-commit hook looks like:
+in projects. Add the pre-commit commands from your v4 configuration file. Since
+hooks run outside of NPM, you need to type `npx lint-staged` instead of
+`lint-staged`. The generated and modified pre-commit hook looks like this:
 
 ```bash:.husky/pre-commit
 #!/bin/sh
@@ -68,8 +68,8 @@ this command
 npx husky add .husky/pre-push
 ```
 
-and add the pre-push commands from the v4 config file. The pre-push hook now
-looks like this:
+and add the pre-push commands from the v4 configuration file. The pre-push hook
+now looks like this:
 
 ```bash:.husky/pre-push
 #!/bin/sh
