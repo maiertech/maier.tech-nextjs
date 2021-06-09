@@ -7,6 +7,14 @@
     {
       "source": "/posts/what-you-need-to-know-about-the-file-system-route-api-in-gatsby",
       "destination": "/posts/what-you-need-to-know-about-gatsby-s-file-system-route-api"
+    },
+    {
+      "source": "/posts/introduction-to-github-codespaces",
+      "destination": "/posts/move-your-ide-to-the-cloud-introduction-to-github-codespaces"
+    },
+    {
+      "source": "/posts/what-to-do-when-github-codespaces-is-down",
+      "destination": "/posts/how-to-brace-for-a-github-codespaces-outage"
     }
   ]
 }
