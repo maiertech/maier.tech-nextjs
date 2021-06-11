@@ -1,6 +1,6 @@
+import H1 from '@/components/h1';
 import Layout from '@/components/layout';
 import SEO from '@/components/seo';
-import H1 from '@/components/h1';
 import Topics from '@/components/topics';
 
 export default function PostsPage() {

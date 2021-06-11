@@ -42,11 +42,11 @@
     "tailwindcss": "^2.1.4"
   },
   "devDependencies": {
-    "@maiertech/eslint-config": "^2.0.1",
+    "@maiertech/eslint-config": "^3.0.0",
     "@maiertech/prettier-config": "^1.0.1",
     "@types/glob": "^7.1.3",
-    "@types/luxon": "^1.26.5",
-    "@types/react": "^17.0.9",
+    "@types/luxon": "^1.27.0",
+    "@types/react": "^17.0.11",
     "autoprefixer": "^10.2.6",
     "eslint": "^7.28.0",
     "husky": "^6.0.0",
@@ -58,6 +58,39 @@
   "eslintConfig": {
     "extends": "@maiertech",
     "rules": {
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "@/types/**",
+              "group": "type"
+            },
+            {
+              "pattern": "@/**",
+              "group": "external",
+              "position": "after"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "internal"
+          ],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
       "jsx-a11y/anchor-is-valid": "off"
     }
   },

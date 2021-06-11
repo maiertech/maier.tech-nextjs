@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import Logo from '@/components/logo';
+
 import Container from '@/components/container';
+import Logo from '@/components/logo';
 
 const navigation = [
   { name: 'Posts', href: '/posts' },

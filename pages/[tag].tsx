@@ -1,18 +1,17 @@
 import { DateTime } from 'luxon';
 import Link from 'next/link';
 
-import { getTags } from '@/lib/tags';
+import H1 from '@/components/h1';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
 import { getFrontmatters } from '@/lib/collections';
 import { normalize as normalizeFrontmatters } from '@/lib/posts';
+import { getTags } from '@/lib/tags';
 import { normalize as normalizeTags } from '@/lib/tags';
 
-import SEO from '@/components/seo';
-import Layout from '@/components/layout';
-import H1 from '@/components/h1';
-
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { PostPageMetadata, Tag } from '@/types/metadata';
-import { PostFrontmatter } from '@/types/frontmatter';
+import type { PostFrontmatter } from '@/types/frontmatter';
+import type { PostPageMetadata, Tag } from '@/types/metadata';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
 const collection = 'posts';
 

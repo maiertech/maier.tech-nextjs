@@ -1,6 +1,6 @@
+import * as Fathom from 'fathom-client';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import * as Fathom from 'fathom-client';
 
 export function useAnalytics() {
   const router = useRouter();

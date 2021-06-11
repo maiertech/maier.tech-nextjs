@@ -1,6 +1,6 @@
 import Layout from '@/components/layout';
 
-import { SEOMetadata } from '@/types/metadata';
+import type { SEOMetadata } from '@/types/metadata';
 
 type Props = {
   metadata: SEOMetadata;

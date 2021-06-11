@@ -1,4 +1,4 @@
-import { Link } from '@/types/metadata';
+import type { Link } from '@/types/metadata';
 
 export type Frontmatter = { title: string; [key: string]: any };
 

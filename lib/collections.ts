@@ -1,12 +1,14 @@
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+
 import glob from 'glob';
 import matter from 'gray-matter';
-import { slugify } from './helpers';
-import { serialize } from 'next-mdx-remote/serialize';
 import mdxPrism from 'mdx-prism';
+import { serialize } from 'next-mdx-remote/serialize';
 
-import { Frontmatter } from '@/types/frontmatter';
+import { slugify } from './helpers';
+
+import type { Frontmatter } from '@/types/frontmatter';
 
 /** Path to directory with MDX collections. */
 const contentPath = path.join(process.cwd(), 'content');

@@ -1,8 +1,9 @@
 import path from 'path';
-import { getMdxFiles } from '@/lib/collections';
-import allowedTags from '@/content/tags';
 
-import { Tag } from '@/types/metadata';
+import allowedTags from '@/content/tags';
+import { getMdxFiles } from '@/lib/collections';
+
+import type { Tag } from '@/types/metadata';
 
 /**
  * Retrieve all tags for given collections.
