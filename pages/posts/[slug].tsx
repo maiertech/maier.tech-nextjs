@@ -1,17 +1,18 @@
 import { DateTime } from 'luxon';
+import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
 
+import H1 from '@/components/h1';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
 import { getFileBySlug, getFrontmatters } from '@/lib/collections';
 import { slugify } from '@/lib/helpers';
 import { normalize as normalizeFrontmatters } from '@/lib/posts';
-import Layout from '@/components/layout';
-import SEO from '@/components/seo';
-import H1 from '@/components/h1';
 
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { PostFrontmatter } from '@/types/frontmatter';
-import { PostPageMetadata } from '@/types/metadata';
+import type { PostFrontmatter } from '@/types/frontmatter';
+import type { PostPageMetadata } from '@/types/metadata';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const collection = 'posts';
 

@@ -1,8 +1,9 @@
-import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
+
 import pkg from '../package.json';
 
-import { SEOMetadata } from '@/types/metadata';
+import type { SEOMetadata } from '@/types/metadata';
 
 export default function SEO({ title, description, canonicalUrl }: SEOMetadata) {
   const router = useRouter();

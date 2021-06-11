@@ -4,8 +4,8 @@ import authors from '@/content/authors';
 import { slugify } from '@/lib/helpers';
 import { normalize as normalizeTags } from '@/lib/tags';
 
-import { PostPageMetadata } from '@/types/metadata';
-import { PostFrontmatter } from '@/types/frontmatter';
+import type { PostFrontmatter } from '@/types/frontmatter';
+import type { PostPageMetadata } from '@/types/metadata';
 
 /**
  * Normalize an array of post frontmatters and sort desc by date and asc by title.

@@ -1,12 +1,12 @@
-import { DefaultSeo } from 'next-seo';
 import 'tailwindcss/tailwind.css';
+import { DefaultSeo } from 'next-seo';
 
-import { useAnalytics } from '@/lib/analytics';
 import '@/styles/global.css';
-
-import type { AppProps } from 'next/app';
+import { useAnalytics } from '@/lib/analytics';
 
 import SEO from '../next-seo.config';
+
+import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useAnalytics();
