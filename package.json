@@ -34,7 +34,7 @@
     "next-remote-watch": "^1.0.0",
     "next-seo": "^4.24.0",
     "next-sitemap": "^1.6.105",
-    "postcss": "^8.3.0",
+    "postcss": "^8.3.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "rehype": "^11.0.0",
