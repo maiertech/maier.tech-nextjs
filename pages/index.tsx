@@ -12,7 +12,7 @@ export default function Homepage() {
         </p>
         <p className="max-w-xl mt-5 mx-auto text-xl text-text-light">
           Hi, my name is Thilo. I am a developer based in Queens, NY. I work at
-          the world's largest non-profit. I write about creating super fast
+          the world’s largest non-profit. I write about creating super fast
           websites with Next.js and about developer productivity.
         </p>
       </div>
