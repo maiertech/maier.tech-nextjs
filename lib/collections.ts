@@ -5,6 +5,7 @@ import glob from 'glob';
 import matter from 'gray-matter';
 import mdxPrism from 'mdx-prism';
 import { serialize } from 'next-mdx-remote/serialize';
+import codeTitles from 'remark-code-titles';
 
 import { slugify } from './helpers';
 
@@ -19,10 +20,6 @@ type MdxFile = {
   content: string;
 };
 
-let cache: {
-  [key: string]: MdxFile[];
-} = {};
-
 /**
  * Get all files that are part of an MDX collection.
  *
@@ -31,15 +28,13 @@ let cache: {
  * @returns Array of objects with frontmatter and content.
  */
 export function getMdxFiles(collection: string): MdxFile[] {
-  if (!cache[collection]) {
-    const paths = glob.sync(`${path.join(contentPath, collection)}/**/*.mdx`);
-    cache[collection] = paths.map((filePath) => {
-      const file = fs.readFileSync(filePath, 'utf-8');
-      const { data, content } = matter(file);
-      return { frontmatter: { ...data }, content } as MdxFile;
-    });
-  }
-  return cache[collection];
+  // Caching files to avoid reading the same files several times from the file system would break local dev.
+  const paths = glob.sync(`${path.join(contentPath, collection)}/**/*.mdx`);
+  return paths.map((filePath) => {
+    const file = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(file);
+    return { frontmatter: { ...data }, content } as MdxFile;
+  });
 }
 
 /**
@@ -79,7 +74,7 @@ export async function getFileBySlug(collection: string, slug: string) {
   if (file) {
     const mdxSource = await serialize(file.content, {
       mdxOptions: {
-        remarkPlugins: [require('remark-code-titles')],
+        remarkPlugins: [codeTitles],
         rehypePlugins: [mdxPrism],
       },
     });
