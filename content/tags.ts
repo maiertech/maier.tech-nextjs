@@ -5,21 +5,29 @@ const tags: {
     label: 'Codespaces',
     title: 'Posts about GitHub Codespaces',
   },
-  dataviz: {
-    label: 'Dataviz',
-    title: 'Posts about data visualization',
-  },
   gatsby: {
     label: 'Gatsby',
     title: 'Posts about Gatsby',
   },
-  nextjs: {
+  next: {
     label: 'Next.js',
     title: 'Posts about Next.js',
   },
+  node: {
+    label: 'Node.js',
+    title: 'Posts about Node.js',
+  },
   productivity: {
-    label: 'Devprod',
+    label: 'Productivity',
     title: 'Posts about developer productivity',
+  },
+  tooling: {
+    label: 'Tooling',
+    title: 'Posts about developer tooling',
+  },
+  vscode: {
+    label: 'VS Code',
+    title: 'Posts about VS Code',
   },
 };
 
