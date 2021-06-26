@@ -12,5 +12,6 @@ export interface TaggedItemFrontmatter extends Frontmatter {
 export interface PostFrontmatter extends TaggedItemFrontmatter {
   author: string;
   description: string;
+  category: string;
   links: Link[];
 }

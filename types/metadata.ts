@@ -1,3 +1,14 @@
+export interface Category {
+  /** Category key used in frontmatter. */
+  key: string;
+  /** Label used when displaying a category. */
+  label: string;
+  /** Title for category page. */
+  title: string;
+  /** Path to category page. */
+  path: string;
+}
+
 export interface Tag {
   /** Tag key used in frontmatter. */
   key: string;
@@ -33,6 +44,7 @@ export interface PostPageMetadata extends PageMetadata {
   author: string;
   date: string;
   description: string;
+  category: Category;
   tags: Tag[];
   links?: Link[];
 }
