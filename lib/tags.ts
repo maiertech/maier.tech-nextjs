@@ -6,7 +6,7 @@ import { getMdxFiles } from '@/lib/collections';
 import type { Tag } from '@/types/metadata';
 
 /**
- * Retrieve all tags for given collections.
+ * Retrieve all tags for a given collection.
  *
  * @param collection The collection for which tags are retrieved.
  *
@@ -22,29 +22,20 @@ export function getTags(collection: string): Tag[] {
   });
 
   // Normalize tags.
-  return normalize(Array.from(keys));
+  return Array.from(keys).map((key) => normalize(key));
 }
 
 /**
- * Filter out tags that are not allowed and lookup labels.
+ * Augment a tag.
  *
- * @param tags Raw tags (keys).
+ * @param key Tag key.
  *
- * @returns Normalized tags, i.e. only allowed tags augmented with label and path to tag page.
+ * @returns Normalized tag, i.e. augmented with label, tag page title and path to tag page.
  */
-export function normalize(tags: string[]): Tag[] {
-  if (tags.length === 0) return [];
-  const normalizedTags = tags.reduce((validTags, tag) => {
-    const allowedTag = allowedTags[tag];
-    if (allowedTag) {
-      validTags.push({
-        key: tag,
-        label: allowedTag.label,
-        title: allowedTag.title,
-        path: path.join('/', tag),
-      });
-    }
-    return validTags;
-  }, [] as Tag[]);
-  return normalizedTags;
+export function normalize(key: string): Tag {
+  const tag = allowedTags[key];
+  if (!tag) {
+    throw new Error(`Invalid tag: ${key}`);
+  }
+  return { key, path: path.join('/tags', key), ...tag };
 }

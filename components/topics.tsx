@@ -5,25 +5,25 @@ const topics = [
     title: 'Create super fast websites with Next.js',
     description:
       'Next.js is my favorite framework to create fast and scalable websites. I write about issues I ran into and how I solved them.',
-    href: '/next',
+    href: '/tags/next',
   },
   {
     title: 'Boost your developer productivity',
     description:
       'I write about how I boost my productivity as a developer. Mostly tooling but also how to not loose track of what is important and how to keep distractions at bay.',
-    href: '/productivity',
+    href: '/tags/productivity',
   },
   {
     title: 'The basics: Node.js',
     description:
       'Node.js is the foundation for JavaScript development. I write about tooling I use in JavaScript projects and managing NPM packages.',
-    href: '/node',
+    href: '/tags/node',
   },
   {
     title: 'Create super fast websites with Gatsby',
     description:
       'Gatsby is another framework to create fast and scalable websites. I write about issues I ran into and how I solved them.',
-    href: '/gatsby',
+    href: '/tags/gatsby',
   },
 ];
 
