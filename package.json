@@ -30,7 +30,7 @@
     "gray-matter": "^4.0.3",
     "luxon": "^1.27.0",
     "mdx-prism": "^0.3.3",
-    "next": "^11.0.1",
+    "next": "^11.1.2",
     "next-mdx-remote": "^3.0.2",
     "next-remote-watch": "^1.0.0",
     "next-seo": "^4.26.0",
@@ -54,7 +54,7 @@
     "lint-staged": "^11.0.0",
     "npm-check": "^5.9.2",
     "prettier": "^2.3.2",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
